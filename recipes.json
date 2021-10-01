@@ -1,0 +1,59 @@
+{
+  "recipes": [
+    {
+      "id": 0,
+      "name": "Noodle salad",
+      "description": "Oldt family recipe featuring chopped mediterranean veggies over noodles",
+      "servingSize": 2,
+      "prepTime": "15 minutes",
+      "cookTime": "15 minutes",
+      "ingredients": [
+        "120g Linguine",
+        "4 tablespoons of Newmans Own",
+        "30g of crumbled feta cheese",
+        "10g pepperoncini",
+        "1 red onion",
+        "1 cucumber",
+        "2 tomates",
+        "1 8oz can of sliced black olives"
+      ],
+      "instructions": [
+        "boil the pasta",
+        "chop the ingredients",
+        "layer the dish so: noodles, cucumber, pepperoncini, red onion, tomato, black olives, feta. Drizzle with Newmans",
+        "cut the pasta and mix at the table."
+      ],
+      "notes": ""
+    }, {
+      "id": 1,
+      "name": "Puttanesca",
+      "description": "Tomoatoy pasta with olives and garlic",
+      "servingSize": 2,
+      "prepTime": "10 minutes",
+      "cookTime": "45 minutes",
+      "ingredients": [
+        "120g Spagetti",
+        "28oz crushed tomatoes",
+        "1/2 cup quartered kalamata olives",
+        "2 teaspoons anchovie paste",
+        "1 teaspoon tomato paste",
+        "generous pinch of basil",
+        "pinch of pepper flakes",
+        "5 tablespoons olive oil",
+        "8 garlic cloves",
+        "8 oz jar capers"
+      ],
+      "instructions": [
+        "chop 4 of the 8 garlic cloves",
+        "quarter the kalamata olives",
+        "strain the capers",
+        "sauté the anchovie paste and chopped garlic in the 5 tablespoons of olive oil until the anchovie paste is dissolved.",
+        "add the crushed tomatoes, kalamata olives, basil, pepper fkales, capers, and press the remaining 4 garlic cloves into the sauce.",
+        "stir the sauce into the oil, mixing them well. use a whisk if possible",
+        "simmer for 30 minutes. the sauce is thick and will make large bubbles, use low heat.",
+        "boil the pasta and serve the sauce over the pasta"
+      ],
+      "notes": "goes well with milk"
+    }
+  ]
+}
