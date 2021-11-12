@@ -79,3 +79,16 @@ Technologies used for delete functionality:
 * [Dialog component](https://mui.com/components/dialogs/#basic-dialog)
 * DELETE API - write api which deletes a single recipe
 
+## Data persistence
+I am thinking about using [indexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API), and later implementing a "save to cloud" feature.
+
+IndexedDB is a document store "NoSQL" database that is built into the browser. It is a lot like localStorage or sessionStorage in that the browser exposes functions to read/write data to persistent storage. I am still reading up on how indexedDB is used and how we will use it in our app, but I have a basic idea:
+* Use a [service layer](https://en.wikipedia.org/wiki/Service_layer_pattern) to abstract the details of reading/writing the data away from the components.
+* Service layer uses indexedDB to read/write data
+* Create a backend around a database similar to indexedDB
+* UI will implement a "cloud sync" feature
+  * User must log in to use it.
+    * [Use google account to sign in](https://developers.google.com/identity/sign-in/web/sign-in) or some other OAuth provider
+  * Use a service worker to update in the background
+    * I've not done this before, but I imagine the worker will watch for changes and occasionally send updates to the backend with http calls
+  * Backend will need to be hosted somewhere, with a domain name, server, and all that entails.
