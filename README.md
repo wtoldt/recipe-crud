@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Recipe CRUD App
+This app provides basic Create, Read, Update, and Delete functionality for recipes.
+It is intended as a developer project to become familiar with CRUD patterns and interfaces.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [wtoldt.github.io/recipe-crud](https://wtoldt.github.io/recipe-crud)
 
-## Available Scripts
+### Clone and run
+Based on the create-react-app, simply clone and `npm install` and `npm run` to run the application.
 
-In the project directory, you can run:
+## Project Road map
+### Create
+Route: _/create_
 
-### `npm start`
+The create page will allow users to create new recipes and save them to the app. The UI will have a form which represents the recipe, an input for each property. The form must be validated in order for the app to save the recipe. The UI will save the recipe via API, or some mock api that persists to storage. TBD.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The create page could be it's own page, with a distinct route, or it could be a modal displayed on the list view.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Technologies used in create page:
+* forms (maybe use [react-hook-form](https://react-hook-form.com/))
+  * validation
+  * form state (error, isDirty, isTouched, etc)
+* HTML & CSS
+  * assembling a form in html and all that entails
+  * create with [material-ui](https://mui.com/) components for pizazz
+* POST API - write api that persists the recipe to storage
 
-### `npm test`
+### Read (and List)
+There will be a couple pages that perform the read function of the CRUD app - single page view and list view.
+#### List view
+Route: _/_ or _/list_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is the central point for the app, listing the available recipes plus providing buttons to:
+* Search/filter the recipes
+* View individual recipes (the single page recipe view)
+* Delete recipes
+* Edit recipes
 
-### `npm run build`
+Technologies used in list page:
+* [table component](https://mui.com/components/tables/#sorting-amp-selecting) which lists the recipes, provides pagination, sorting, search, and filtering functionalities. Each row represents a recipe and links to the single page view as well as buttons to edit/delete the recipe.
+* GET API - read only api that gets a list of recipes. Pagination, filtering, and search are accomplished in the query parameters.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Single page view
+Route: _/\<recipeID\>_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This page is the most detailed view of a recipe in the app, providing description, ingredients list, instructions, and anything else needed to understand and cook the recipe. The recipe id in the route determines which recipe to show, and the page will need to GET the recipe on mount.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Technologies used in single page view:
+* HTML & CSS
+  * Lay out all the recipe info with HTML, and style it with CSS.
+* GET API - read only api that will get a single recipe.
 
-### `npm run eject`
+## Update
+Route: _/\<recipeID\>/edit_
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This page will allow the user to edit recipes that are already in the system. The recipe to edit will come from the recipe id in the route. The page will have the same form as the create page, and the initial values will come from the recipe. Like the create page, the form will need to be valid before the update is performed.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The update page will be accessible via a button on the read views:
+* List view
+  * Edit button on the recipe row. Clicking it navigates to the update page
+* Single page view
+  * Edit button/link exposed somewhere on the page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Technologies used in update page:
+* Forms (same as create)
+* HTML & CSS (same as create)
+* PUT API - used to persist the changes to the recipe
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Delete
+_No route for delete_
 
-## Learn More
+Delete does not require it's own page, and is accomplished via actions exposed on the read views.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* List view
+  * Each row will have a delete button. Clicking the delete button first shows a confirmation dialog (Are you sure you want to delete this recipe?), and upon confirmation will use the DELETE API to delete the single recipe.
+* Single page view
+  * Exposes a delete and edit button somewhere on the page. Clicking the delete button first shows a confirmation dialog, and upon confirmation will use the DELETE API to delete the single recipe.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Technologies used for delete functionality:
+* [Dialog component](https://mui.com/components/dialogs/#basic-dialog)
+* DELETE API - write api which deletes a single recipe
 
-### Code Splitting
+## Data persistence
+I am thinking about using [indexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API), and later implementing a "save to cloud" feature.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+IndexedDB is a document store "NoSQL" database that is built into the browser. It is a lot like localStorage or sessionStorage in that the browser exposes functions to read/write data to persistent storage. I am still reading up on how indexedDB is used and how we will use it in our app, but I have a basic idea:
+* Use a [service layer](https://en.wikipedia.org/wiki/Service_layer_pattern) to abstract the details of reading/writing the data away from the components.
+* Service layer uses indexedDB to read/write data
+* Create a backend around a database similar to indexedDB
+* UI will implement a "cloud sync" feature
+  * User must log in to use it.
+    * [Use google account to sign in](https://developers.google.com/identity/sign-in/web/sign-in) or some other OAuth provider
+  * Use a service worker to update in the background
+    * I've not done this before, but I imagine the worker will watch for changes and occasionally send updates to the backend with http calls
+  * Backend will need to be hosted somewhere, with a domain name, server, and all that entails.
